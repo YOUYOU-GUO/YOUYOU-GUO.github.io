@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Title in browser window -->
-        <title>UnERD 2026</title>
-        <!-- External style sheet -->
-        <link rel="stylesheet" href="./CSS/mystyle.css">
-    </head>
+    <!-- Title in browser window -->
+    <title>UnERD 2026</title>
+    
+    <!-- External style sheet -->
+    <link rel="stylesheet" href="./CSS/mystyle.css">
+
+    <!-- Basic browser cache instructions -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Smart Cache-Busting Script -->
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Check if the unique version token 'v' is already in the web address
+            if (!urlParams.has('v')) {
+                const now = new Date().getTime();
+                urlParams.set('v', now);
+                
+                // Instantly reloads the page once with the unique timestamp token
+                window.location.search = urlParams.toString();
+            }
+        })();
+    </script>
+</head>
+
 
     <body>
         <!-- Wrapper (container) div for entire page layout -->
