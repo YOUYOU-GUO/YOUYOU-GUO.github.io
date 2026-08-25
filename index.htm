@@ -37,6 +37,7 @@
             <main>
                 <div style="display: flex; align-items: baseline; gap: 1rem;">
                     <h1 style="margin: 0;">UnERD 2026 - YOUYOU GUO</h1>
+
                 </div>
                 <h2>Test 1: isotropic diffusion</h2>
                 <pre class="code-container"><code class="language-matlab">
@@ -60,13 +61,16 @@ paracond.e_v = @(v) sign(v);
 paracond.q = @(x, v) paracond.qx(x) .* (paracond.e_v(v) == 1) + (1 - paracond.qx(x)) .* (paracond.e_v(v) == -1);
 paracond.qx_x = @(x) zeros(size(x));               
                 </code></pre>
-
+                <h3>- DTE</h3>
                 <video controls muted   playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
                     <source src="./videos/para_parameter_test2/mesh5paracond1moldtepara21.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-
+                <h3>- KTE</h3>
+                <video controls muted   playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/para_parameter_test2/mesh5paracond1molktepara21.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
 
                 <h2>Test 2: chemotaxis</h2>
                 <pre class="code-container"><code class="language-matlab">
@@ -92,42 +96,18 @@ paracond.e_v = @(v) sign(v);
 paracond.q = @(x, v) paracond.qx(x) .* (paracond.e_v(v) == 1) + (1 - paracond.qx(x)) .* (paracond.e_v(v) == -1);
 paracond.qx_x = @(x) zeros(size(x));               
                 </code></pre>
-
+                <h3>- DTE</h3>
                 <video controls muted   playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
                     <source src="./videos/para_parameter_test2/mesh5paracond5moldtepara21.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-
-
-                <h2>Test 3: anisotropic diffusion</h2>
-                <pre class="code-container"><code class="language-matlab">
-%% hypcond2
-hypcond.n = 1;
-hypcond.kappa = 1;
-
-%% model scale
-hypcond.epsilon = 0.01;                             
-hypcond.gamma = 1;                                
-hypcond.a = hypcond.gamma*hypcond.epsilon^hypcond.gamma;
-
-%% chemotaxis
-hypcond.Q = @(t,x) zeros(size(x)); 
-hypcond.Q_x = @(t,x) zeros(size(x));
-hypcond.W = 0;                                                                   
-
-%% fiber orientation
-hypcond.qx  = @(x) ones(size(x)) .* 3/5;         
-hypcond.e_v = @(v) sign(v);
-hypcond.q = @(x, v) hypcond.qx(x) .* (hypcond.e_v(v) == 1) + (1 - hypcond.qx(x)) .* (hypcond.e_v(v) == -1);
-hypcond.qx_x = @(x) zeros(size(x));               
-                </code></pre>
-
-                <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
-                    <source src="./videos/hyp_parameter_test2/mesh5hypcond2moldtehyp21.mp4" type="video/mp4">
+                <h3>- KTE</h3>
+                <video controls muted   playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/para_parameter_test2/mesh5paracond5molktepara21.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
 
+                <h2>Test 3: anisotropic diffusion</h2>
                 <pre class="code-container"><code class="language-matlab">
 %% hypcond3
 hypcond.n = 1;
@@ -149,14 +129,52 @@ hypcond.e_v = @(v) sign(v);
 hypcond.q = @(x, v) hypcond.qx(x) .* (hypcond.e_v(v) == 1) + (1 - hypcond.qx(x)) .* (hypcond.e_v(v) == -1);
 hypcond.qx_x = @(x) zeros(size(x));               
                 </code></pre>
-
+                <h3>- DTE</h3>
                 <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
                     <source src="./videos/hyp_parameter_test2/mesh5hypcond3moldtehyp21.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>- KTE</h3>
+                <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/hyp_parameter_test2/mesh5hypcond3molktehyp21.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
 
 
 
+                <pre class="code-container"><code class="language-matlab">
+%% hypcond2
+hypcond.n = 1;
+hypcond.kappa = 1;
+
+%% model scale
+hypcond.epsilon = 0.01;                             
+hypcond.gamma = 1;                                
+hypcond.a = hypcond.gamma*hypcond.epsilon^hypcond.gamma;
+
+%% chemotaxis
+hypcond.Q = @(t,x) zeros(size(x)); 
+hypcond.Q_x = @(t,x) zeros(size(x));
+hypcond.W = 0;                                                                   
+
+%% fiber orientation
+hypcond.qx  = @(x) ones(size(x)) .* 3/5;         
+hypcond.e_v = @(v) sign(v);
+hypcond.q = @(x, v) hypcond.qx(x) .* (hypcond.e_v(v) == 1) + (1 - hypcond.qx(x)) .* (hypcond.e_v(v) == -1);
+hypcond.qx_x = @(x) zeros(size(x));               
+                </code></pre>
+                <h3>- DTE</h3>
+                <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/hyp_parameter_test2/mesh5hypcond2moldtehyp21.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>- KTE</h3>
+                <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/hyp_parameter_test2/mesh5hypcond2molktehyp21.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                
                 <h2>Test 4: chemotaxis in directed fibers</h2>
                 <pre class="code-container"><code class="language-matlab">
 %% hypcond6
@@ -181,8 +199,14 @@ hypcond.e_v = @(v) sign(v);
 hypcond.q = @(x, v) hypcond.qx(x) .* (hypcond.e_v(v) == 1) + (1 - hypcond.qx(x)) .* (hypcond.e_v(v) == -1);
 hypcond.qx_x = @(x) zeros(size(x));               
                 </code></pre>
+                <h3>- DTE</h3>
                 <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
                     <source src="./videos/hyp_parameter_test2/mesh5hypcond6moldtehyp21.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>- KTE</h3>
+                <video controls muted  playsinline style="width: 100vw; height: auto; display: block; object-fit: cover;">
+                    <source src="./videos/hyp_parameter_test2/mesh5hypcond6molktehyp21.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
 
